@@ -6,11 +6,15 @@ public class Animal
     int age ;
     boolean isMammal ;
 
-    public Animal ( String family , String name ,int age , boolean isMammal )
-    {
-        this.family = family ;
-        this.name = name ;
-        this.age = age ;
+    public Animal ( String family , String name ,int age , boolean isMammal ) {
+        this.family = family;
+        this.name = name;
+        this.age = age;
         this.isMammal = isMammal;
     }
+
+        // Autres méthodes pour gérer le refuge (par exemple, getAnimals, removeAnimal, etc.)
+
+
+
 }
