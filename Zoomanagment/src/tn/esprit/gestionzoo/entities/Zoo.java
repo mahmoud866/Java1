@@ -16,36 +16,37 @@ public class Zoo {
     public int searchAnimal(Animal animal) {
         for (int i = 0; i < animalCount; i++) {
             Animal currentAnimal = animals[i];
-            if (currentAnimal.name.equals(animal.name) &&
-                    currentAnimal.family.equals(animal.family) &&
-                    currentAnimal.age == animal.age &&
-                    currentAnimal.isMammal == animal.isMammal) {
-                return i; // Retourner l'indice de l'animal trouvé
+            if (currentAnimal.getName().equals(animal.getName()) &&
+                    currentAnimal.getFamily().equals(animal.getFamily()) &&
+                    currentAnimal.getage() == animal.getage() &&
+                    currentAnimal.isMammal() == animal.isMammal()) {
+                return i;
             }
         }
-        return -1; // Retourner -1 si l'animal n'est pas trouvé
+        return -1;
     }
 
-    // Ajouter un animal en vérifiant qu'il n'existe pas déjà et que la capacité n'est pas dépassée
+
     public boolean addAnimal(Animal animal) {
-        if (animalCount >= nbrCages) {
+
+        if (isZooFull()) {
             System.out.println("Capacité maximale du zoo atteinte.");
-            return false; // Ne pas dépasser le nombre maximal d'animaux
+            return false;
         }
 
-        // Utiliser la méthode searchAnimal pour vérifier si l'animal existe déjà
+
         if (searchAnimal(animal) != -1) {
             System.out.println("Cet animal est déjà présent dans le zoo.");
-            return false; // Ne pas ajouter un animal qui est déjà présent
+            return false;
         }
 
-        // Ajouter l'animal si toutes les conditions sont respectées
+
         animals[animalCount] = animal;
         animalCount++;
-        return true; // Ajout réussi
+        return true;
     }
 
-    // Supprimer un animal
+
     public boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal);
         if (index == -1) {
@@ -53,7 +54,7 @@ public class Zoo {
             return false;
         }
 
-        // Décaler les animaux pour combler le trou
+
         for (int i = index; i < animalCount - 1; i++) {
             animals[i] = animals[i + 1];
         }
@@ -62,7 +63,7 @@ public class Zoo {
         return true;
     }
 
-    // Afficher les informations du zoo
+
     public void displayZoo() {
         System.out.println("Nom du zoo: " + name);
         System.out.println("Ville: " + city);
@@ -72,11 +73,11 @@ public class Zoo {
         return name;
     }
 
-    // Afficher les animaux du zoo
+
     private void displayAnimals() {
         for (int i = 0; i < animalCount; i++) {
             Animal animal = animals[i];
-            System.out.println("Animal " + (i + 1) + ": " + animal.name + " (Famille: " + animal.family + ", Âge: " + animal.age + ")");
+            System.out.println("Animal " + (i + 1) + ": " + animal.getName() + " (Famille: " + animal.getFamily() + ", Âge: " + animal.getage() + ")");
         }
     }
     public boolean isZooFull() {
@@ -84,11 +85,11 @@ public class Zoo {
     }
     public static Zoo comparerZoo(Zoo z1, Zoo z2) {
         if (z1.animalCount > z2.animalCount) {
-            return z1; // z1 a plus d'animaux
+            return z1;
         } else if (z1.animalCount < z2.animalCount) {
-            return z2; // z2 a plus d'animaux
+            return z2;
         } else {
-            return z1; // Les deux zoos ont le même nombre d'animaux, retourner z1 par défaut
+            return z1;
         }
     }
 

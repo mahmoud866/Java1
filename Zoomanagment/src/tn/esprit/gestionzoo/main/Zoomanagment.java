@@ -13,6 +13,7 @@ class Zoomanagement {
         zoo1.addAnimal(animal1);
         zoo1.addAnimal(animal2);
 
+
         zoo2.addAnimal(animal3);
 
         // Comparer les deux zoos
@@ -20,5 +21,6 @@ class Zoomanagement {
 
         // Utilisation du getter pour accéder au nom
         System.out.println("Le zoo avec le plus d'animaux est : " + zooAvecLePlusDAnimaux.getName());
+        zoo1.searchAnimal(animal1);
     }
 }
